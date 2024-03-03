@@ -3,7 +3,7 @@ from unittest.mock import patch, Mock
 from grepper_python.main import Grepper
 
 
-class TestGrepper(unittest.TestCase):
+class Test(unittest.TestCase):
     def setUp(self):
         self.api_key = "my_api_key"
         self.grepper = Grepper(self.api_key)
