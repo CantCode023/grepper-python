@@ -5,7 +5,9 @@ The Grepper Python library provides convenient access to the Grepper API from ap
 Python 3.7 and later.
 
 ## PIP
-Coming soon.
+```
+pip install grepper-python
+```
 
 ## Manual Installation
 ```bash
