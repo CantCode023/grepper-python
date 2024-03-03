@@ -16,6 +16,7 @@ import logging
 from typing import NamedTuple, Literal
 
 from .answer import GrepperAnswer
+from .main import Grepper
 
 
 class VersionInfo(NamedTuple):
