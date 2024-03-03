@@ -100,7 +100,7 @@ class Grepper:
         """This function returns an answer specified by the id.
 
         Args:
-            id (int): The id for the specified answer. ex: "560676 ".
+            id (int, required): The id for the specified answer. ex: "560676 ".
 
         Returns:
             GrepperAnswer
@@ -123,3 +123,30 @@ class Grepper:
             downvotes=json_response["downvotes"],
         )
         return answer
+    
+    def update_answer(
+        self, id: int, answer: str
+    ):
+        """This function returns an answer specified by the id.
+
+        Args:
+            id (int, required): The id for the specified answer. ex: "560676 ".
+            answer (str, required): The answer you want it to update to. ex "new answer content here".
+
+        Returns:
+            Dict
+        """
+        headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
+        data = f"""answer[content]={answer}"""
+        response = requests.post(
+            f"https://api.grepper.com/v1/answers/{id}",
+            headers=headers,
+            data=data
+        )
+        if str(response.status_code) != "200":
+            exception = exception_handler(str(response.status_code))
+            raise exception(exception.__doc__)
+        else:
+            return response.json()
