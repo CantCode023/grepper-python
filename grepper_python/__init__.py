@@ -18,19 +18,6 @@ from typing import NamedTuple, Literal
 from .answer import GrepperAnswer
 from .main import Grepper
 
-
-class VersionInfo(NamedTuple):
-    major: int
-    minor: int
-    micro: int
-    releaselevel: Literal["alpha", "beta", "candidate", "final"]
-    serial: int
-
-
-version_info: VersionInfo = VersionInfo(
-    major=0, minor=0, micro=1, releaselevel="alpha", serial=0
-)
-
 logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 del (
