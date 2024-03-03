@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, Mock
-from grepper_python.main import Grepper
+from grepper_python import Grepper
 
 
 class Test(unittest.TestCase):
