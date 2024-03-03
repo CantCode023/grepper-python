@@ -64,3 +64,6 @@ class Test(unittest.TestCase):
 
         # Test that the exception handler was called with the correct parameter
         mock_exception_handler.assert_called_once_with("404")
+
+if __name__ == "__main__":
+    unittest.main()
