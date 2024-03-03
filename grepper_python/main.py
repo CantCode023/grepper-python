@@ -93,3 +93,33 @@ class Grepper:
             )
             data.append(new_answer)
         return data
+    
+    def fetch_answer(
+        self, id: int
+    ):
+        """This function returns an answer specified by the id.
+
+        Args:
+            id (int): The id for the specified answer. ex: "560676 ".
+
+        Returns:
+            GrepperAnswer
+        """
+        response = requests.get(
+            f"https://api.grepper.com/v1/answers/{id}",
+            auth=(self.__api_key, "")
+        )
+        if str(response.status_code) != "200":
+            exception = exception_handler(str(response.status_code))
+            raise exception(exception.__doc__)
+        json_response = response.json()
+        answer = GrepperAnswer(
+            id=json_response["id"],
+            content=json_response["content"],
+            author_name=json_response["author_name"],
+            author_profile_url=json_response["author_profile_url"],
+            title=json_response["title"],
+            upvotes=json_response["upvotes"],
+            downvotes=json_response["downvotes"],
+        )
+        return answer
