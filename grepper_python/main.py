@@ -87,15 +87,15 @@ class Grepper:
             raise exception(exception.__doc__)
         json_response = response.json()
         data = []
-        for i in json_response["data"]:
+        for answer in json_response["data"]:
             new_answer = GrepperAnswer(
-                id=i["id"],
-                content=i["content"],
-                author_name=i["author_name"],
-                author_profile_url=i["author_profile_url"],
-                title=i["title"],
-                upvotes=i["upvotes"],
-                downvotes=i["downvotes"],
+                id=answer["id"],
+                content=answer["content"],
+                author_name=answer["author_name"],
+                author_profile_url=answer["author_profile_url"],
+                title=answer["title"],
+                upvotes=answer["upvotes"],
+                downvotes=answer["downvotes"],
             )
             data.append(new_answer)
         return data
