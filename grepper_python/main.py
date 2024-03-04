@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, List
 
 from .answer import GrepperAnswer
 from .exceptions import BadRequest
@@ -67,7 +67,7 @@ class Grepper:
 
     def search(
         self, query: str = False, similarity: Optional[int] = 60
-    ):
+    ) -> List[GrepperAnswer]:
         """This function searches all answers based on a query.
 
         Args:
@@ -83,8 +83,7 @@ class Grepper:
             auth=(self._api_key, ""),
         )
         if response.status_code != 200:
-            exception = exception_handler(str(response.status_code))
-            raise exception(exception.__doc__)
+            raise exception_handler(response.status_code)
         json_response = response.json()
         data = []
         for answer in json_response["data"]:
@@ -102,7 +101,7 @@ class Grepper:
     
     def fetch_answer(
         self, id: int
-    ):
+    ) -> GrepperAnswer:
         """This function returns an answer specified by the id.
 
         Args:
@@ -116,8 +115,7 @@ class Grepper:
             auth=(self._api_key, "")
         )
         if response.status_code != 200:
-            exception = exception_handler(str(response.status_code))
-            raise exception(exception.__doc__)
+            raise exception_handler(response.status_code)
         json_response = response.json()
         answer = GrepperAnswer(
             id=json_response["id"],
@@ -153,7 +151,6 @@ class Grepper:
             auth=(self._api_key, "")
         )
         if response.status_code != 200:
-            exception = exception_handler(str(response.status_code))
-            raise exception(exception.__doc__)
+            raise exception_handler(response.status_code)
         else:
             return response.json()
