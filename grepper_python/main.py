@@ -39,22 +39,22 @@ from .exceptions import ServiceUnavailable
 import requests
 
 
-def exception_handler(status_code: str):
-    if status_code == "400":
+def exception_handler(status_code):
+    if status_code == 400:
         return BadRequest
-    elif status_code == "401":
+    elif status_code == 401:
         return Unauthorized
-    elif status_code == "403":
+    elif status_code == 403:
         return Forbidden
-    elif status_code == "404":
+    elif status_code == 404:
         return NotFound
-    elif status_code == "405":
+    elif status_code == 405:
         return MethodNotAllowed
-    elif status_code == "429":
+    elif status_code == 429:
         return TooManyRequests
-    elif status_code == "500":
+    elif status_code == 500:
         return InternalServerError
-    elif status_code == "503":
+    elif status_code == 503:
         return ServiceUnavailable
 
 
