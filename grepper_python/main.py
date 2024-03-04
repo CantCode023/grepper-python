@@ -27,7 +27,14 @@ from __future__ import annotations
 from typing import Optional
 
 from .answer import GrepperAnswer
-from .exceptions import *
+from .exceptions import BadRequest
+from .exceptions import Unauthorized
+from .exceptions import Forbidden
+from .exceptions import NotFound
+from .exceptions import MethodNotAllowed
+from .exceptions import TooManyRequests
+from .exceptions import InternalServerError
+from .exceptions import ServiceUnavailable
 
 import requests
 
