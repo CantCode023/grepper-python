@@ -2,16 +2,7 @@ import unittest
 from unittest.mock import patch
 
 from grepper_python import Grepper
-from grepper_python.exceptions import (
-    BadRequest,
-    Unauthorized,
-    Forbidden,
-    NotFound,
-    MethodNotAllowed,
-    TooManyRequests,
-    InternalServerError,
-    ServiceUnavailable
-)
+from grepper_python.exceptions import NotFound
 
 
 class Test(unittest.TestCase):
