@@ -11,18 +11,15 @@ class TestGrepper(unittest.TestCase):
 
     @patch("requests.post")
     def test_update_answer_success(self, mock_post):
-        # Mock successful API response (without modifying data)
         mock_response = mock_post.return_value
         mock_response.status_code = 200
         mock_response.json.return_value = {"message": "Answer updated successfully"}
 
-        # Call the function (simulating the update)
-        answer_id = 12345  # Replace with the ID of an answer you have permission to update
-        new_content = "updated content"  # Replace with the desired update
+        answer_id = 12345 
+        new_content = "updated content"
 
-        # Assertions (limited due to mocking)
         self.grepper.update_answer(answer_id, new_content)
-        mock_post.assert_called_once_with(  # Verify API call with placeholders
+        mock_post.assert_called_once_with(
             f"https://api.grepper.com/v1/answers/{answer_id}",
             headers={"Content-Type": "application/x-www-form-urlencoded"},
             data=f"answer[content]={new_content}",
@@ -31,16 +28,13 @@ class TestGrepper(unittest.TestCase):
 
     @patch("requests.post")
     def test_update_answer_error(self, mock_post):
-        # Mock API error response
         mock_response = mock_post.return_value
         mock_response.status_code = 401
         mock_response.text = "Unauthorized"
 
-        # Call the function and expect an exception
         with self.assertRaises(Exception) as cm:
             self.grepper.update_answer(12345, "new answer content")
 
-        # Assertions (limited due to mocking)
         self.assertEqual(str(cm.exception).startswith("HTTPException:"), True)
 
 

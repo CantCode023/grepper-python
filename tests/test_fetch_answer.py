@@ -16,12 +16,11 @@ from grepper_python.exceptions import (
 
 class Test(unittest.TestCase):
     def setUp(self):
-        self.api_key = "my_api_key"  # Replace with your actual API key
+        self.api_key = "my_api_key"
         self.grepper = Grepper(self.api_key)
 
     @patch("requests.get")
     def test_fetch_answer_success(self, mock_get):
-        # Mock successful API response
         mock_response = mock_get.return_value
         mock_response.status_code = 200
         mock_response.json.return_value = {
@@ -34,7 +33,6 @@ class Test(unittest.TestCase):
             "downvotes": 0,
         }
 
-        # Call the function
         answer = self.grepper.fetch_answer(12345)
 
         # Assertions
@@ -48,12 +46,10 @@ class Test(unittest.TestCase):
 
     @patch("requests.get")
     def test_fetch_answer_not_found(self, mock_get):
-        # Mock API response with 404 status code
         mock_response = mock_get.return_value
         mock_response.status_code = 404
         mock_response.text = "Not Found"
 
-        # Call the function and expect an exception
         with self.assertRaises(NotFound) as cm:
             self.grepper.fetch_answer(12345)
 
@@ -61,12 +57,10 @@ class Test(unittest.TestCase):
 
     @patch("requests.get")
     def test_fetch_answer_other_error(self, mock_get):
-        # Mock API response with unexpected status code
         mock_response = mock_get.return_value
         mock_response.status_code = 500
         mock_response.text = "Internal Server Error"
 
-        # Call the function and expect an exception
         with self.assertRaises(Exception) as cm:
             self.grepper.fetch_answer(12345)
 
