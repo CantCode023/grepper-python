@@ -26,15 +26,17 @@ from __future__ import annotations
 
 from typing import Optional, List
 
-from .answer import GrepperAnswer
-from .exceptions import BadRequest
-from .exceptions import Unauthorized
-from .exceptions import Forbidden
-from .exceptions import NotFound
-from .exceptions import MethodNotAllowed
-from .exceptions import TooManyRequests
-from .exceptions import InternalServerError
-from .exceptions import ServiceUnavailable
+from grepper_python.answer import GrepperAnswer
+from grepper_python.exceptions import (
+    BadRequest,
+    Unauthorized,
+    Forbidden,
+    NotFound,
+    MethodNotAllowed,
+    TooManyRequests,
+    InternalServerError,
+    ServiceUnavailable
+)
 
 import requests
 
