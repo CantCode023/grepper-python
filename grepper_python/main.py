@@ -62,9 +62,8 @@ class Grepper:
     """
     Python Grepper API Wrapper
     """
-
-    def __init__(self, __api_key: str):
-        self.__api_key = __api_key
+    def __init__(self, api_key: str):
+        self._api_key = api_key
 
     def search(
         self, query: str = False, similarity: Optional[int] = 60
@@ -81,7 +80,7 @@ class Grepper:
         response = requests.get(
             "https://api.grepper.com/v1/answers/search",
             params={"query": query, "similarity": similarity},
-            auth=(self.__api_key, ""),
+            auth=(self._api_key, ""),
         )
         if str(response.status_code) != "200":
             exception = exception_handler(str(response.status_code))
@@ -114,7 +113,7 @@ class Grepper:
         """
         response = requests.get(
             f"https://api.grepper.com/v1/answers/{id}",
-            auth=(self.__api_key, "")
+            auth=(self._api_key, "")
         )
         if str(response.status_code) != "200":
             exception = exception_handler(str(response.status_code))
@@ -150,7 +149,8 @@ class Grepper:
         response = requests.post(
             f"https://api.grepper.com/v1/answers/{id}",
             headers=headers,
-            data=data
+            data=data,
+            auth=(self._api_key, "")
         )
         if str(response.status_code) != "200":
             exception = exception_handler(str(response.status_code))
