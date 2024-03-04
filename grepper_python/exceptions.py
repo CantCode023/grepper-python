@@ -5,7 +5,7 @@ This module contains the set of grepper-python's exceptions.
 """
 
 class DocDefaultException(Exception):
-    def __init__(self, msg:str=None, *args, **kwargs):
+    def __init__(self, msg=None, *args, **kwargs):
         super().__init__(msg or self.__doc__, *args, **kwargs)
 
 # 400
