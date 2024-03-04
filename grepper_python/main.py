@@ -82,7 +82,7 @@ class Grepper:
             params={"query": query, "similarity": similarity},
             auth=(self._api_key, ""),
         )
-        if str(response.status_code) != "200":
+        if response.status_code != 200:
             exception = exception_handler(str(response.status_code))
             raise exception(exception.__doc__)
         json_response = response.json()
@@ -115,7 +115,7 @@ class Grepper:
             f"https://api.grepper.com/v1/answers/{id}",
             auth=(self._api_key, "")
         )
-        if str(response.status_code) != "200":
+        if response.status_code != 200:
             exception = exception_handler(str(response.status_code))
             raise exception(exception.__doc__)
         json_response = response.json()
@@ -152,7 +152,7 @@ class Grepper:
             data=data,
             auth=(self._api_key, "")
         )
-        if str(response.status_code) != "200":
+        if response.status_code != 200:
             exception = exception_handler(str(response.status_code))
             raise exception(exception.__doc__)
         else:
