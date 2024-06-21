@@ -20,6 +20,8 @@ python setup.py install
 # Usage
 
 ## Initialising a new Grepper Class
+The following code initialises a new `Grepper` Class.
+
 ```py
 from grepper_python import Grepper
 
@@ -27,8 +29,6 @@ grepper = Grepper("Your grepper API Key")
 ```
 > Visit [Grepper Account Settings](https://www.grepper.com/app/settings-account.php) to get your API key.
 
-
-The following code initialises a new `Grepper` Class.
 
 ## GrepperAnswer Type Class Reference 
 ```py
@@ -48,7 +48,7 @@ Refer the above type class whenever you see `GrepperAnswer`
 
 This function searches all answers based on a query.
 
-### Arguments required
+### Required parameters
 
 1. ``query (str, optional)``: Query to search through answer titles.
 2. ``similarity (Optional[int], optional)``: How similar the query has to be to the answer title. 1-100 where 1 is really loose matching and 100 is really strict/tight match. Defaults to 60.
@@ -94,7 +94,7 @@ abort a git command
 ## 2. fetch_answer
 This function returns an answer specified by the id.
 
-### Arguments
+### Required parameters
  - `id (int, required)`: The id for the specified answer. ex: 504956.
 ### Result 
 fetch_answer returns `GrepperAnswer` type class on successful search.
@@ -124,7 +124,7 @@ print(answer)
 This function updates/edits the answer of specified id.
 - `NOTE:` This endpoint is in progress and not yet available according to grepper API docs.
 
-### Arguments
+### Required parameters
  - `id (int, required)`: The id for the specified answer. ex: "504956 ".
  - `answer (str, required)`: The answer you want it to update to. ex "new answer content here".
 
