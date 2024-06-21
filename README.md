@@ -134,7 +134,7 @@ returns a `Dict`
 ### Example
 ```py
 grepper = Grepper("YOUR_API_KEY")
-result = grepper.update_answer(id="504956",answer="The new edited answer")
+result = grepper.update_answer(id=504956,answer="The new edited answer")
 print(result)
 ```
 
