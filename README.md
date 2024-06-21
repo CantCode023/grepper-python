@@ -39,9 +39,7 @@ class GrepperAnswer:
 Refer the above type class whenever you see `GrepperAnswer`
 
 ---
-## Available methods 
-
-## search
+# search
 This function searches all answers based on a query.
 
 ### Arguments 
@@ -73,10 +71,10 @@ print(answers)
 ]
 ```
 ---
-## fetch_answer
+# fetch_answer
 This function returns an answer specified by the id.
 ### Arguments
- - `id (int, required)`: The id for the specified answer. ex: "560676 ".
+ - `id (int, required)`: The id for the specified answer. ex: "504956 ".
 ### Result 
 fetch_answer returns `GrepperAnswer` type class on successful search.
 
@@ -99,5 +97,30 @@ print(answer)
       "object": "answer",
       "downvotes": 2
     }
+```
+---
+
+# update_answer
+This function updates/edits the answer of specified id.
+- `NOTE:` This endpoint is in progress and not yet available according to grepper API docs.
+### Arguments
+ - `id (int, required)`: The id for the specified answer. ex: "504956 ".
+ - `answer (str, required)`: The answer you want it to update to. ex "new answer content here".
+### Result
+returns a `Dict`
+
+### Examples
+#### Example update_answer
+```py
+grepper = Grepper("your-grepper-api-key")
+result = grepper.update_answer(id="504956",answer="The new edited answer")
+print(result)
+```
+#### Example Result
+```py
+{
+ id: 2,
+ success: "true"
+}
 ```
 ---
