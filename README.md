@@ -39,36 +39,47 @@ class GrepperAnswer:
 Refer the above type class whenever you see `GrepperAnswer`
 
 ---
-# search
+## Search function
+
 This function searches all answers based on a query.
 
-### Arguments 
-  - `query (str, optional)`: Query to search through answer titles. ex: "Javascript loop array backwords". Defaults to False.
-  - `similarity (Optional[int], optional)`: How similar the query has to be to the answer title. 1-100 where 1 is really loose matching and 100 is really strict/tight match. Defaults to 60.
-### Result
-Search returns a Array of `GrepperAnswer` type classes on successful query
+## Arguements required
 
-### Examples
-#### Example query
+1. ``query (str, optional)``: Query to search through answer titles.
+2. ``similarity (Optional[int], optional)``: How similar the query has to be to the answer title. 1-100 where 1 is really loose matching and 100 is really strict/tight match. Defaults to 60.
+
+## Returned value
+
+GrepperAnswer
+
+## Example of the function by using in a code:
+
 ```py
-grepper = Grepper("your-grepper-api-key")
-answers = grepper.search("javascript loop array backwords")
-print(answers)
+import grepper_python
+
+grepper = grepper_python.Grepper("YOUR API")
+
+data = grepper.search("cat videos")
+for i in data:
+    print(i)
 ```
-#### Example Output
+
+## Output
+
 ```py
-[
-    {
-      "id": 560676,
-      "content": "let arr = [1, 2, 3];\n\narr.slice().reverse().forEach(x => console.log(x))\n Run code snippetHide results",
-      "author_name": "Homely Hyena",
-      "author_profile_url": "https://www.grepper.com/profile/homely-hyena-qrcy8ksj0gew",
-      "title": "javascript loop through array backwords",
-      "upvotes": 0,
-      "object": "answer",
-      "downvotes": 0
-    }
-]
+
+GrepperAnswer(id=667265, content='{"tags":[{"tag":"p","content":"Get back to work"}]}', 
+
+author_name='Smyth Family', 
+
+author_profile_url='https://www.grepper.com/profile/smyth-family',
+
+ title='cat videos', 
+
+ upvotes=4, 
+
+ downvotes=0)
+
 ```
 ---
 # fetch_answer
