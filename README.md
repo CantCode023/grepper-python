@@ -16,10 +16,88 @@ cd grepper-python
 python setup.py install
 ```
 
-## Getting Started
-Simple usage:
+## Getting Grepper API key
+Visit [Grepper Account Settings](https://www.grepper.com/app/settings-account.php) to get your API key.
+
+## Initialising a new Grepper Class
+```py
+grepper = Grepper("Your grepper API Key")
+```
+The following code initialises a new `Grepper` Class.
+
+## GrepperAnswer Type Class Reference 
+```py
+class GrepperAnswer:
+    id: int
+    content: str
+    author_name: str
+    author_profile_url: str
+    title: str
+    upvotes: int
+    downvotes: int
+```
+Refer the above type class whenever you see `GrepperAnswer`
+
+---
+## Available methods 
+
+## search
+This function searches all answers based on a query.
+
+### Arguments 
+  - `query (str, optional)`: Query to search through answer titles. ex: "Javascript loop array backwords". Defaults to False.
+  - `similarity (Optional[int], optional)`: How similar the query has to be to the answer title. 1-100 where 1 is really loose matching and 100 is really strict/tight match. Defaults to 60.
+### Result
+Search returns a Array of `GrepperAnswer` type classes on successful query
+
+### Examples
+#### Example query
 ```py
 grepper = Grepper("your-grepper-api-key")
-answers = grepper.search("query")
+answers = grepper.search("javascript loop array backwords")
 print(answers)
 ```
+#### Example Output
+```py
+[
+    {
+      "id": 560676,
+      "content": "let arr = [1, 2, 3];\n\narr.slice().reverse().forEach(x => console.log(x))\n Run code snippetHide results",
+      "author_name": "Homely Hyena",
+      "author_profile_url": "https://www.grepper.com/profile/homely-hyena-qrcy8ksj0gew",
+      "title": "javascript loop through array backwords",
+      "upvotes": 0,
+      "object": "answer",
+      "downvotes": 0
+    }
+]
+```
+---
+## fetch_answer
+This function returns an answer specified by the id.
+### Arguments
+ - `id (int, required)`: The id for the specified answer. ex: "560676 ".
+### Result 
+fetch_answer returns `GrepperAnswer` type class on successful search.
+
+### Examples
+#### Example fetch_answer
+```py
+grepper = Grepper("your-grepper-api-key")
+answer = grepper.fetch_answer("504956")
+print(answer)
+```
+### Example Output
+```py
+{
+      "id": 504956,
+      "content": "var arr=[1,2,3];\narr.reverse().forEach(x=> console.log(x))",
+      "author_name": "Yanislav Ivanov",
+      "author_profile_url": "https://www.grepper.com/profile/yanislav-ivanov-r2lfrl14s6xy",
+      "title": "js loop array back",
+      "upvotes": 2,
+      "object": "answer",
+      "downvotes": 2
+    }
+```
+---
