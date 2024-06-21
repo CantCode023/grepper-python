@@ -55,7 +55,7 @@ This function searches all answers based on a query.
 
 ### Returned value
 
-GrepperAnswer
+list[[GrepperAnswer](#grepperanswer-type-class-reference)]
 
 ### Example:
 
@@ -67,13 +67,13 @@ data = grepper.search("git abort command")
 
 # Returns list of GrepperAnswer objects
 for answer in data:
-		print(answer.id)
-		print(answer.content)
-		print(answer.author_name)
-		print(answer.author_profile_url)
-		print(answer.title)
-		print(answer.upvotes)
-		print(answer.downvotes)
+    print(answer.id)
+    print(answer.content)
+    print(answer.author_name)
+    print(answer.author_profile_url)
+    print(answer.title)
+    print(answer.upvotes)
+    print(answer.downvotes)
 ```
 
 ### Output
@@ -108,14 +108,14 @@ print(answer)
 ### Output
 ```py
 {
-		"id": 504956,
-		"content": "var arr=[1,2,3];\narr.reverse().forEach(x=> console.log(x))",
-		"author_name": "Yanislav Ivanov",
-		"author_profile_url": "https://www.grepper.com/profile/yanislav-ivanov-r2lfrl14s6xy",
-		"title": "js loop array back",
-		"upvotes": 2,
-		"object": "answer",
-		"downvotes": 2
+    "id": 504956,
+    "content": "var arr=[1,2,3];\narr.reverse().forEach(x=> console.log(x))",
+    "author_name": "Yanislav Ivanov",
+    "author_profile_url": "https://www.grepper.com/profile/yanislav-ivanov-r2lfrl14s6xy",
+    "title": "js loop array back",
+    "upvotes": 2,
+    "object": "answer",
+    "downvotes": 2
 }
 ```
 ---
@@ -141,8 +141,8 @@ print(result)
 ### Output
 ```py
 {
-		id: 2,
-		success: "true"
+    id: 2,
+    success: "true"
 }
 ```
 ---
